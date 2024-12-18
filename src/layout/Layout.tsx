@@ -1,9 +1,17 @@
 import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function Layout() {
     return (
-        <main className="container bg-zinc-800">
-            <Outlet/>
-        </main>
+        <>
+            <Header />
+            <main className="bg-zinc-800 flex flex-col w-full">
+                <div className="flex-grow">
+                    <Outlet />
+                </div>
+            </main>
+            <Footer />
+        </>
     )
 }
