@@ -1,8 +1,8 @@
 import { ArrowRightOutlined, LoginOutlined } from "@ant-design/icons";
-import Header from "../components/Header";
 import { useEffect } from "react";
 import { useAppStore } from "../store/useAppStore";
 import FormSearchIp from "../components/FormSearchIp";
+import { Map } from "../components/Map";
 
 export default function IndexPage() {
 
@@ -14,10 +14,12 @@ export default function IndexPage() {
     const visibility = useAppStore((state) => state.visibility)
     const activeInput = useAppStore((state) => state.activeInput)
     const stateInput = useAppStore((state) => state.stateInput)
+    const addToHistory = useAppStore((state) => state.addToHistory)
 
     useEffect(() => {
         setIp()
     }, [])
+
 
     const handleClickFindMyIp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
@@ -29,8 +31,6 @@ export default function IndexPage() {
     }
 
 
-    console.log(resultIpData);
-
     return (
         <>
             <div
@@ -41,7 +41,7 @@ export default function IndexPage() {
             <div className="flex flex-col gap-4 w-4/5 m-auto">
                 <div className="text-white flex flex-col gap-4">
                     <h1 className="text-2xl">Descubre tu ip publica, ubicacion y geolocalizacion gratuita</h1>
-                    <p className="text-sm">Obtener tu ip publica te da acceso a muchas ventajas como la localizacion y la geolocalizacion de tu dispositivo.Ademas tambien podras probar y validar si tu servicio vpn esta activo y funcionando.</p>
+                    <p className="text-sm pb-8">Obtener tu ip publica te da acceso a muchas ventajas como la localizacion y la geolocalizacion de tu dispositivo.Ademas tambien podras probar y validar si tu servicio vpn esta activo y funcionando.</p>
                 </div>
                 <div className="flex justify-around items-center mb-4">
                     <button className={visibility ? 'bg-yellow-700 px-4 py-2.5 font-semibold rounded-md' : 'bg-yellow-500 px-4 py-2.5 font-semibold rounded-md'} disabled={visibility} onClick={handleClickFindMyIp}>Buscar mi ip <ArrowRightOutlined /></button>
@@ -122,10 +122,20 @@ export default function IndexPage() {
                             </div>
                         </div>
                     </div>
+                    <div className="w-4/5 m-auto mt-10">
+                        <div className="h-96 w-full">
+                            <Map latitude={resultIpData.latitude} longitude={resultIpData.longitude}/>
+                        </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-4 mt-8">
+                        <h3 className="text-white font-extralight"> Guardar en tu historial de busqueda?  </h3>
+                        <div >
+                            <button className="bg-yellow-500 hover:bg-yellow-700 font-bold py-2 px-4 rounded" onClick={() => addToHistory(resultIpData)}>Guardar</button>
+                        </div>
+                    </div>
                 </>) :
                 (<></>)
             }
         </>
     )
 }
-/* w-4/5 m-auto mt-10 flex flex-col items-center justify-center gap-4  rounded-xl h-96 */
