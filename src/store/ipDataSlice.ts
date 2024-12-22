@@ -8,7 +8,9 @@ export type TypeIpDataSlice = {
     resultIpData: TypeIpResultData
     visibility: boolean
     stateInput: boolean
+    disableButton: boolean
     setIp: () => Promise<void>
+    isSameIp: () => void
     searchIpData: (ip:string) => Promise<void>
     activeInput: () => void
 }
@@ -18,17 +20,23 @@ export const createIpDataSlice:StateCreator<TypeIpDataSlice> = (set) => ({
     resultIpData: {} as TypeIpResultData,
     visibility: false,
     stateInput:false,
+    disableButton: false,
     setIp: async () => {
         const ip = await fetchIpDefault()
         set({
             ip
         })
     },
+    isSameIp: () => {
+        set({
+            disableButton: true
+        })
+    },
     searchIpData: async (ip) =>{
         const resultIpData = await fetchIpData(ip)
         set({
             resultIpData,
-            visibility: true
+            visibility : true
         })
     },
     activeInput: () => {

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAppStore } from "../store/useAppStore";
 import FormSearchIp from "../components/FormSearchIp";
 import { Map } from "../components/Map";
+import AlertMessage from "../components/AlertMessage";
 
 export default function IndexPage() {
 
@@ -15,6 +16,11 @@ export default function IndexPage() {
     const activeInput = useAppStore((state) => state.activeInput)
     const stateInput = useAppStore((state) => state.stateInput)
     const addToHistory = useAppStore((state) => state.addToHistory)
+    const disableButton = useAppStore((state) => state.disableButton)
+    const isSameIp = useAppStore((state) => state.isSameIp)
+    const deleteItemMessage = useAppStore((state) => state.deleteItemMessage)
+    const repeatItemMessage = useAppStore((state) => state.repeatItemMessage)
+    const AddItemMessage = useAppStore((state) => state.AddItemMessage)
 
     useEffect(() => {
         setIp()
@@ -23,6 +29,7 @@ export default function IndexPage() {
 
     const handleClickFindMyIp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        isSameIp()
         searchIpData(ip)
     }
     const handleClickFindOtherIp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -33,6 +40,7 @@ export default function IndexPage() {
 
     return (
         <>
+            <AlertMessage Mensaje={AddItemMessage ? 'Se agrego correctamente al historial' : repeatItemMessage ? 'Ya se encuentra en el historial' : ''} open={AddItemMessage || repeatItemMessage} changeIcon={AddItemMessage ? 'success' : repeatItemMessage? 'warning' : ''} />
             <div
                 className="bg-contain bg-no-repeat bg-center w-4/5 m-auto my-5 rounded-xl h-56 bg-yellow-400"
                 style={{ backgroundImage: "url('https://svgsilh.com/svg/2750411.svg')" }}
@@ -44,7 +52,7 @@ export default function IndexPage() {
                     <p className="text-sm pb-8">Obtener tu ip publica te da acceso a muchas ventajas como la localizacion y la geolocalizacion de tu dispositivo.Ademas tambien podras probar y validar si tu servicio vpn esta activo y funcionando.</p>
                 </div>
                 <div className="flex justify-around items-center mb-4">
-                    <button className={visibility ? 'bg-yellow-700 px-4 py-2.5 font-semibold rounded-md' : 'bg-yellow-500 px-4 py-2.5 font-semibold rounded-md'} disabled={visibility} onClick={handleClickFindMyIp}>Buscar mi ip <ArrowRightOutlined /></button>
+                    <button className={disableButton ? 'bg-yellow-700 px-4 py-2.5 font-semibold rounded-md' : 'bg-yellow-500 px-4 py-2.5 font-semibold rounded-md'} disabled={disableButton} onClick={handleClickFindMyIp}>Buscar mi ip <ArrowRightOutlined /></button>
                     <button className='bg-gray-700 border-2 border-yellow-500 text-yellow-500 px-4 py-2 font-semibold rounded-md' onClick={handleClickFindOtherIp}>Buscar otro ip <LoginOutlined /></button>
                 </div>
             </div>
@@ -123,8 +131,8 @@ export default function IndexPage() {
                         </div>
                     </div>
                     <div className="w-4/5 m-auto mt-10">
-                        <div className="h-96 w-full">
-                            <Map latitude={resultIpData.latitude} longitude={resultIpData.longitude}/>
+                        <div className="h-96 w-full z-0 relative">
+                            <Map latitude={resultIpData.latitude} longitude={resultIpData.longitude} />
                         </div>
                     </div>
                     <div className="flex flex-col items-center gap-4 mt-8">
