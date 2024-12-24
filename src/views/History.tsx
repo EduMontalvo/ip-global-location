@@ -11,7 +11,7 @@ export default function History() {
     <div>
       <AlertMessage Mensaje={deleteItemMessage? 'Se elimino del historial' : ''} changeIcon={'error'} open={deleteItemMessage? (true) : (false)}/>
       {historyArray.length ?
-        (<div className="grid grid-cols-1 gap-10 py-10">
+        (<div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
           {historyArray.map((item) => (
             <Card key={item.ip} item={item} />
           ))}
