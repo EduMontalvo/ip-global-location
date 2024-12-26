@@ -4,6 +4,7 @@ import { useAppStore } from "../store/useAppStore";
 import FormSearchIp from "../components/FormSearchIp";
 import { Map } from "../components/Map";
 import AlertMessage from "../components/AlertMessage";
+import * as motion from "motion/react-client"
 
 export default function IndexPage() {
 
@@ -36,7 +37,6 @@ export default function IndexPage() {
         activeInput()
     }
 
-
     return (
         <>
             <AlertMessage Mensaje={AddItemMessage ? 'Se agrego correctamente al historial' : repeatItemMessage ? 'Ya se encuentra en el historial' : ''} open={AddItemMessage || repeatItemMessage} changeIcon={AddItemMessage ? 'success' : repeatItemMessage ? 'warning' : ''} />
@@ -60,7 +60,12 @@ export default function IndexPage() {
             {stateInput ? (<FormSearchIp />) : (<></>)}
             {visibility ?
                 (<>
-                    <div className="grid grid-cols-1 py-10 md:grid-cols-2 md:grid-rows-3 md:gap-y-10 w-11/12 mx-auto ">
+                    <motion.div initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            duration: 0.4,
+                            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                        }} className="grid grid-cols-1 py-10 md:grid-cols-2 md:grid-rows-3 md:gap-y-10 w-11/12 mx-auto ">
                         <div
                             className="bg-cover bg-center w-4/5 m-auto mt-10 flex flex-col items-center justify-center gap-4  rounded-xl h-96 order-1"
                             style={{ backgroundImage: "url('https://images.pexels.com/photos/593158/pexels-photo-593158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}
@@ -86,10 +91,10 @@ export default function IndexPage() {
                             </div>
                         </div>
                         <div
-                            className="bg-cover bg-center md:row-span-1 md:col-span-2 md:w-5/12 md:m-auto w-4/5 m-auto mt-10 flex flex-col items-center justify-center gap-4  rounded-xl h-96 order-3"
+                            className="bg-cover bg-center mt-10 flex flex-col items-center justify-center gap-4  rounded-xl h-96 order-3 md:row-span-1 md:col-span-2 md:w-11/12 md:m-auto w-4/5 m-auto"
                             style={{ backgroundImage: "url('https://images.pexels.com/photos/593159/pexels-photo-593159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}
                         >
-                            <div className="flex flex-col justify-center opacity-80 bg-black border-2 border-white  rounded-xl p-4 h-4/6 w-11/12">
+                            <div className="flex flex-col justify-center opacity-80 bg-black border-2 border-white  rounded-xl p-4 h-4/6 w-11/12 md:items-center text-left">
                                 <h2 className="text-white font-bold">Informacion de Ubicación</h2>
                                 <div>
                                     <p className="text-zinc-300">Ciudad :</p>
@@ -137,7 +142,7 @@ export default function IndexPage() {
                                 <Map latitude={resultIpData.latitude} longitude={resultIpData.longitude} />
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                     <div className="flex flex-col justify-center items-center gap-4 mt-8">
                         <h3 className="text-white font-extralight"> Guardar en tu historial de busqueda?  </h3>
                         <div className="w-4/5 m-auto mt-5 md:w-2/12">

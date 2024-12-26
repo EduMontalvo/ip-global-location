@@ -10,8 +10,8 @@ type TypeCard = {
 export default function Card({ item }: TypeCard) {
     const deleteFromHistory = useAppStore((state) => state.deleteFromHistory)
     return (
-        <div className="w-4/5 m-auto bg-zinc-950 rounded-lg flex flex-col md:flex-row md:items-center md:justify-center md:w-full md:h-full ">
-            <div className="h-56 w-full md:h-full md:w-2/3 z-0 relative">
+        <div className="w-4/5 m-auto bg-zinc-950 rounded-lg flex flex-col">
+            <div className="h-56 w-full z-0 relative">
                 <Map latitude={item.latitude} longitude={item.longitude} />
             </div>
             <div className="px-4">

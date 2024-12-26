@@ -9,6 +9,7 @@ export type TypeHistorySlide = {
     existInArrayIpData: (data: TypeIpResultData) => boolean
     addToHistory: (data: TypeIpResultData) => void
     deleteFromHistory: (data: TypeIpResultData) => void
+    FromLocalStorage: () => void
 }
 export const createHistorySlide: StateCreator<TypeHistorySlide> = (set, get) => ({
     historyArray: [],
@@ -42,6 +43,7 @@ export const createHistorySlide: StateCreator<TypeHistorySlide> = (set, get) => 
                 })
             }, 1200);
         }
+        localStorage.setItem('history', JSON.stringify(get().historyArray))
     },
     deleteFromHistory: (data) => {
         const newHistoryArray = get().historyArray.filter(item => item.ip !== data.ip)
@@ -54,5 +56,13 @@ export const createHistorySlide: StateCreator<TypeHistorySlide> = (set, get) => 
                 deleteItemMessage:false
             })
         }, 1200);
+    },
+    FromLocalStorage: () => {
+        const getLocalStorage = localStorage.getItem('history')
+        if(getLocalStorage){
+            set({
+                historyArray: JSON.parse(getLocalStorage)
+            })
+        }
     }
 })
