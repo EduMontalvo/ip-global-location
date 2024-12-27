@@ -56,6 +56,7 @@ export const createHistorySlide: StateCreator<TypeHistorySlide> = (set, get) => 
                 deleteItemMessage:false
             })
         }, 1200);
+        localStorage.setItem('history', JSON.stringify(newHistoryArray))
     },
     FromLocalStorage: () => {
         const getLocalStorage = localStorage.getItem('history')

@@ -6,21 +6,23 @@ import { useAppStore } from "../store/useAppStore";
 
 export default function Layout() {
 
-    const  FromLocalStorage = useAppStore((state) => state.FromLocalStorage)
+    const FromLocalStorage = useAppStore((state) => state.FromLocalStorage)
 
-    useEffect( () => {
+    useEffect(() => {
         FromLocalStorage()
-    },[])
+    }, [])
 
     return (
         <>
-            <Header />
-            <main className="bg-zinc-800 flex flex-col w-full">
-                <div className="flex-grow">
-                    <Outlet />
-                </div>
-            </main>
-            <Footer />
+            <div className="bg-zinc-800 flex flex-col w-full min-h-screen">
+                <Header />
+                <main>
+                    <div className="flex-grow md:my-20">
+                        <Outlet />
+                    </div>
+                </main>
+                <Footer />
+            </div>
         </>
     )
 }

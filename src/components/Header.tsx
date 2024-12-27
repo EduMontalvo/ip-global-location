@@ -35,4 +35,3 @@ export default function Header() {
     </>
   )
 }
-//? flex flex-col gap-2

@@ -5,7 +5,7 @@ export default function Footer() {
     return (
 
         <div className=" w-full bg-zinc-800">
-            <div className="w-full flex justify-center py-10">
+            <div className="w-full flex justify-center py-11">
                 <hr className="border-gray-400 w-4/5 md:w-full" />
             </div>
             <div className="flex justify-between items-center w-4/5 m-auto md:w-4/5">

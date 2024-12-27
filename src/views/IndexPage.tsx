@@ -55,17 +55,11 @@ export default function IndexPage() {
                         <button className='bg-gray-700 border-2 border-yellow-500 text-yellow-500 px-4 py-2 font-semibold rounded-md md:w-5/12' onClick={handleClickFindOtherIp}>Buscar otro ip <LoginOutlined /></button>
                     </div>
                 </div>
-                {/* md:w-5/12 */}
             </div>
             {stateInput ? (<FormSearchIp />) : (<></>)}
             {visibility ?
                 (<>
-                    <motion.div initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                            duration: 0.4,
-                            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
-                        }} className="grid grid-cols-1 py-10 md:grid-cols-2 md:grid-rows-3 md:gap-y-10 w-11/12 mx-auto ">
+                    <div className="grid grid-cols-1 py-10 md:grid-cols-2 md:grid-rows-3 md:gap-y-10 w-11/12 mx-auto ">
                         <div
                             className="bg-cover bg-center w-4/5 m-auto mt-10 flex flex-col items-center justify-center gap-4  rounded-xl h-96 order-1"
                             style={{ backgroundImage: "url('https://images.pexels.com/photos/593158/pexels-photo-593158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}
@@ -142,7 +136,7 @@ export default function IndexPage() {
                                 <Map latitude={resultIpData.latitude} longitude={resultIpData.longitude} />
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                     <div className="flex flex-col justify-center items-center gap-4 mt-8">
                         <h3 className="text-white font-extralight"> Guardar en tu historial de busqueda?  </h3>
                         <div className="w-4/5 m-auto mt-5 md:w-2/12">

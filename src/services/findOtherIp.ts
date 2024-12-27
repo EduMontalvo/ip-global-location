@@ -4,15 +4,12 @@ import { TypeIpDataSchema } from "../schema/fetchIpDataSchema"
 
 export const fetchIpData = async (ip: string) => {
 
+    const key = import.meta.env.VITE_API_KEY
+
     const options = {
         method: 'GET',
-        url: `https://api.ipapi.com/${ip}?access_key=d48ac610a83c96b6d45c4c4df9dc92c6
-`
+        url: `https://api.ipapi.com/${ip}?access_key=${key}`
     }
-    //? d48ac610a83c96b6d45c4c4df9dc92c6 *
-    //? 0fbecb1775d6075d3812acb549515ff4 /
-    //? 5adbba24a453b279692742b43f4becb3 /
-    //? fb35470c1a1a509d6d53cb93577adeb2 /
 
     try {
         const { data } = await axios.request(options)
