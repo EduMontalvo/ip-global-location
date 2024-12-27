@@ -4,7 +4,6 @@ import { useAppStore } from "../store/useAppStore";
 import FormSearchIp from "../components/FormSearchIp";
 import { Map } from "../components/Map";
 import AlertMessage from "../components/AlertMessage";
-import * as motion from "motion/react-client"
 
 export default function IndexPage() {
 
