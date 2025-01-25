@@ -14,6 +14,8 @@
 
 This project is a web application that allows users to check their own IP address and get its geolocation using an API. Additionally, users can search for the geolocation of any other IP address.
 
+## Screenshots
+
 ![Homepage Screenshot](src/assets/screenshots/igp_movil_home_active.png)
 ![Homepage Screenshot](src/assets/screenshots/igp_desktop_home.png)
 
