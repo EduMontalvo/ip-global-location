@@ -14,6 +14,21 @@
 
 This project is a web application that allows users to check their own IP address and get its geolocation using an API. Additionally, users can search for the geolocation of any other IP address.
 
+![Homepage Screenshot](src/assets/screenshots/igp_movil_home_active.png)
+![Homepage Screenshot](src/assets/screenshots/igp_desktop_home.png)
+
+*The homepage showing the IP and geolocation results.*
+
+![Search Screenshot](src/assets/screenshots/igp_movil_search.png)
+![Homepage Screenshot](src/assets/screenshots/igp_desktop_search.png)
+
+*The search feature allowing users to input any IP address and get its geolocation.*
+
+![Search Screenshot](src/assets/screenshots/igp_movil_history.png)
+![Search Screenshot](src/assets/screenshots/igp_desktop_history.png)
+
+*The search history feature, displaying previously saved queries and their results.
+
 ### Main Features:
 - 🌐 **Geolocation of the current IP:** The web application retrieves the geolocation information of the IP from which the request is made using an API. This provides data such as approximate location, country, city, and more.
   
