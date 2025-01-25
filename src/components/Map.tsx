@@ -34,7 +34,7 @@ export const Map = ({ latitude, longitude }: MapProps) => {
         >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <Marker position={position} icon={customIcon}>
-                <Popup> Marcador Aqui </Popup>
+                <Popup> Ubicación actual aproximada </Popup>
             </Marker>
             <UpdateMap latitude={latitude} longitude={longitude} />
         </MapContainer>
