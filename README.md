@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Ip Global Location
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Badge en Desarollo](https://img.shields.io/badge/Status-En%20Desarrollo-green)
+![License project](https://img.shields.io/badge/License-MIT-green)
+![Version project](https://img.shields.io/badge/Version-1.0-orange)
+![React](https://img.shields.io/badge/React-blue)
+![](https://img.shields.io/badge/TypeScript-skyblue)
+![](https://img.shields.io/badge/JS-yellow)
+![](https://img.shields.io/badge/HTML-red)
+![GitHub Org's stars](https://img.shields.io/github/stars/edumontalvo?style=social)
 
-Currently, two official plugins are available:
+[View the live project on Netlify](https://ip-global-location.netlify.app/)
+# Project Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a web application that allows users to check their own IP address and get its geolocation using an API. Additionally, users can search for the geolocation of any other IP address.
 
-## Expanding the ESLint configuration
+### Main Features:
+- 🌐 **Geolocation of the current IP:** The web application retrieves the geolocation information of the IP from which the request is made using an API. This provides data such as approximate location, country, city, and more.
+  
+- 🔍 **Geolocation search by IP:** Users can enter any IP address to get its geolocation, offering the flexibility to check any IP of their choice.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- 💾 **Save searches:** All performed searches are stored in the local storage (localStorage). This ensures that the search history remains available even after closing or reloading the browser, and it will only be deleted if the user explicitly chooses to do so.
 
-- Configure the top-level `parserOptions` property like this:
+### Key Features:
+- ⚡ **Simple and quick user interface.**
+- 💾 **Search persistence via local storage.**
+- 🌍 **Immediate access to the geolocation of any IP in real-time.**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Technologies Used:
+| Technology           | Description |
+|----------------------|-------------|
+| **React**            | JavaScript library for building interactive user interfaces. |
+| **React Router DOM** | For routing between pages within the application. |
+| **Axios**            | For making HTTP requests and handling responses. |
+| **Leaflet**          | JavaScript library for creating interactive maps. |
+| **React-Leaflet**    | A React wrapper for integrating Leaflet with React applications. |
+| **Zod**              | TypeScript schema validation library to ensure data correctness and structure. |
+| **Zustand**          | Simple and efficient state management library for React applications. |
+| **Material UI**      | A React component library for UI elements like buttons, forms, and more. |
+| **Ant Design Icons** | A high-quality icon set for user interfaces. |
+| **Emotion**          | Libraries for styling in React: @emotion/react and @emotion/styled provide powerful and flexible ways to write styles in JavaScript. |
+| **Motion**           | Animation library to enhance interactivity and the visual experience of the application. |
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Objective:
+🎯 **The goal of this application is to provide a simple and fast way to check the geolocation of any IP address, while also offering a personalized search history to make future queries more convenient.**
+## Credits:
+This project uses the free API from [ipapi](https://ipapi.com/) to fetch geolocation data for IP addresses.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+You can learn more about the API and its services on their official website: [ipapi](https://ipapi.com/).
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Contact
+
+Feel free to reach out to me at [Gmail](mailto:carloseduardomontalvorodriguez@gmail.com) or follow me on [X](https://x.com/Kaedu18).
